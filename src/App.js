@@ -4,9 +4,14 @@ import { Button, Col, Grid, Row } from 'react-bootstrap';
 import { SongsTable } from './SongsTable';
 import NewSongForm from './NewSongForm';
 import LoaderOverlay from './LoaderOverlay';
+import ErrorPage from './ErrorPage';
 
 class App extends Component {
     render() {
+        if (this.props.view.requestError) {
+            return <ErrorPage/>;
+        }
+        
         const newSongForm = this.props.view.newSongFormVisible ? (
           <Col md={4}>
               <NewSongForm

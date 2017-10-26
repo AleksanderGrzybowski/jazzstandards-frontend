@@ -16,7 +16,8 @@ export function songs(state = songsInitialState, action) {
 
 const viewInitialState = {
     requestInProgess: false,
-    newSongFormVisible: false
+    newSongFormVisible: false,
+    requestError: false
 };
 
 export function view(state = viewInitialState, action) {
@@ -25,6 +26,8 @@ export function view(state = viewInitialState, action) {
             return Object.assign({}, state, {requestInProgess: true});
         case 'REQUEST_FINISH':
             return Object.assign({}, state, {requestInProgess: false});
+        case 'REQUEST_ERROR':
+            return Object.assign({}, state, {requestError: true});
         case 'SHOW_NEW_SONG_FORM':
             return Object.assign({}, state, {newSongFormVisible: true});
         case 'HIDE_NEW_SONG_FORM':
