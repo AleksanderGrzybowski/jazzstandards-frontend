@@ -14,6 +14,15 @@ export function songs(state = songsInitialState, action) {
     }
 }
 
-export function addSongRow(state = {}, action) {
-    return state;
+const viewInitialState = {newSongFormVisible: false};
+
+export function view(state = viewInitialState, action) {
+    switch (action.type) {
+        case 'SHOW_NEW_SONG_FORM':
+            return {newSongFormVisible: true};
+        case 'HIDE_NEW_SONG_FORM':
+            return {newSongFormVisible: false};
+        default:
+            return state;
+    }
 }

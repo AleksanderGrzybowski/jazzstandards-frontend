@@ -4,12 +4,12 @@ import App from './App';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { addSongRow, songs } from './reducers';
+import { songs, view } from './reducers';
 import { connect, Provider } from 'react-redux';
-import { loadSongs } from './actions';
+import { loadSongs, addSong, setSongFormVisible } from './actions';
 
 const store = createStore(
-  combineReducers({songs, addSongRow}),
+  combineReducers({songs, view}),
   applyMiddleware(thunk, createLogger())
 );
 
@@ -18,7 +18,9 @@ const mapStateToProps = (state) => state;
 
 // noinspection JSUnusedGlobalSymbols
 const mapDispatchToProps = (dispatch) => ({
-    loadSongs: () => dispatch(loadSongs())
+    loadSongs: () => dispatch(loadSongs()),
+    addSong: (title, url) => dispatch(addSong(title, url)),
+    setSongFormVisible: (visible) => dispatch(setSongFormVisible(visible))
 });
 
 const LiveApp = connect(mapStateToProps, mapDispatchToProps)(App);
