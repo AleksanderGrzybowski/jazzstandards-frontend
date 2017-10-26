@@ -28,6 +28,18 @@ export function addSong(title, url) {
     }
 }
 
+export function addPractice(songId) {
+    return dispatch => {
+        dispatch({type: 'REQUEST_START'});
+
+        backend.addPractice(songId).then(() => {
+            dispatch({type: 'REQUEST_FINISH'});
+
+            dispatch(loadSongs());
+        });
+    }
+}
+
 export function setSongFormVisible(visible) {
     return dispatch => {
         dispatch({type: visible ? 'SHOW_NEW_SONG_FORM' : 'HIDE_NEW_SONG_FORM'})

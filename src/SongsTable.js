@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import SongRow from './SongRow';
-import { generateDates } from './dateSpanGenerator';
+import { generateRecentDates } from './recentDatesGenerator';
 
 export class SongsTable extends React.Component {
     render() {
@@ -11,10 +11,13 @@ export class SongsTable extends React.Component {
             title={song.title}
             backingTrackUrl={song.backingTrackUrl}
             practiceLog={song.practiceLog}
+            addPractice={() => this.props.addPractice(song.id)}
           />
         );
 
-        const dateColumns = generateDates().map(date => <th>{date.format('MMM DD')}</th>);
+        const dateColumns = generateRecentDates().map((date, index) =>
+          <th key={index}>{date.format('MMM DD')}</th>
+        );
 
         return (
           <Table>

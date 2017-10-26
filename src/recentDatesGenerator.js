@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export function generateDates() {
+export function generateRecentDates() {
     const dates = [];
     let date = moment().subtract(12, 'days');
 

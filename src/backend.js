@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const DATABASE = [
     {
         id: 1,
@@ -20,6 +22,11 @@ export function listSongs() {
 export function addSong(title, url) {
     const nextId = DATABASE[DATABASE.length - 1].id + 1;
     DATABASE.push({id: nextId, title, backingTrackUrl: url, practiceLog: []});
+
+    return Promise.resolve({});
+}
+export function addPractice(songId) {
+    DATABASE.find(song => song.id === songId).practiceLog.push(moment().format('YYYY-MM-DD'));
 
     return Promise.resolve({});
 }

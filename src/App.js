@@ -22,7 +22,10 @@ class App extends Component {
         return (
           <Grid>
               <Row>
-                  <SongsTable songs={this.props.songs.songs}/>
+                  <SongsTable
+                    songs={this.props.songs.songs}
+                    addPractice={this.props.addPractice}
+                  />
               </Row>
               <Row>
                   {newSongForm}
