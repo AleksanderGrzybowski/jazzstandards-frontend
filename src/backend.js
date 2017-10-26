@@ -19,7 +19,7 @@ export function listSongs() {
 
 export function addSong(title, url) {
     const nextId = DATABASE[DATABASE.length - 1].id + 1;
-    DATABASE.push({id: nextId, title, backingTrackUrl: url});
+    DATABASE.push({id: nextId, title, backingTrackUrl: url, practiceLog: []});
 
     return Promise.resolve({});
 }

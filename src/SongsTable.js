@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import SongRow from './SongRow';
+import { generateDates } from './dateSpanGenerator';
 
 export class SongsTable extends React.Component {
     render() {
@@ -13,13 +14,15 @@ export class SongsTable extends React.Component {
           />
         );
 
+        const dateColumns = generateDates().map(date => <th>{date.format('MMM DD')}</th>);
+
         return (
           <Table>
               <thead>
               <tr>
                   <th>Name</th>
                   <th>Link</th>
-                  <th>Practice log</th>
+                  {dateColumns}
               </tr>
               </thead>
               <tbody>
@@ -28,5 +31,4 @@ export class SongsTable extends React.Component {
           </Table>
         )
     }
-
 }
