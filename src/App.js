@@ -25,10 +25,12 @@ class App extends Component {
               {this.props.view.requestInProgess && <LoaderOverlay/>}
               <Grid>
                   <Row>
-                      <SongsTable
-                        songs={this.props.songs.songs}
-                        addPractice={this.props.addPractice}
-                      />
+                      <Col md={12}>
+                          <SongsTable
+                            songs={this.props.songs.songs}
+                            addPractice={this.props.addPractice}
+                          />
+                      </Col>
                   </Row>
                   <Row>
                       {newSongForm}
