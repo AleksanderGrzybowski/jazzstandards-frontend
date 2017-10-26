@@ -1,5 +1,5 @@
 import React from 'react';
-import { generateRecentDates } from './recentDatesGenerator';
+import { generateRecentDates } from './../recentDatesGenerator';
 
 export default function SongRow({title, backingTrackUrl, practiceLog, addPractice}) {
     const dates = generateRecentDates().map(date => date.format('YYYY-MM-DD'));

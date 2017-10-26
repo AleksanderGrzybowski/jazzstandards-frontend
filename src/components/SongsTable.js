@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import SongRow from './SongRow';
-import { generateRecentDates } from './recentDatesGenerator';
+import { generateRecentDates } from './../recentDatesGenerator';
 
 export class SongsTable extends React.Component {
     render() {
