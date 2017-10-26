@@ -16,17 +16,23 @@ const DATABASE = [
 ];
 
 export function listSongs() {
-    return Promise.resolve(DATABASE);
+    return withMockDelay(DATABASE);
 }
 
 export function addSong(title, url) {
     const nextId = DATABASE[DATABASE.length - 1].id + 1;
     DATABASE.push({id: nextId, title, backingTrackUrl: url, practiceLog: []});
 
-    return Promise.resolve({});
+    return withMockDelay({});
 }
 export function addPractice(songId) {
     DATABASE.find(song => song.id === songId).practiceLog.push(moment().format('YYYY-MM-DD'));
 
-    return Promise.resolve({});
+    return withMockDelay({});
+}
+
+function withMockDelay(resolvedValue) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(resolvedValue), 500);
+    });
 }

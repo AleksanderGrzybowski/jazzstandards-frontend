@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
 import { SongsTable } from './SongsTable';
 import NewSongForm from './NewSongForm';
+import LoaderOverlay from './LoaderOverlay';
 
 class App extends Component {
     render() {
@@ -20,17 +21,20 @@ class App extends Component {
         );
 
         return (
-          <Grid>
-              <Row>
-                  <SongsTable
-                    songs={this.props.songs.songs}
-                    addPractice={this.props.addPractice}
-                  />
-              </Row>
-              <Row>
-                  {newSongForm}
-              </Row>
-          </Grid>
+          <div>
+              {this.props.view.requestInProgess && <LoaderOverlay/>}
+              <Grid>
+                  <Row>
+                      <SongsTable
+                        songs={this.props.songs.songs}
+                        addPractice={this.props.addPractice}
+                      />
+                  </Row>
+                  <Row>
+                      {newSongForm}
+                  </Row>
+              </Grid>
+          </div>
         );
     }
 }
