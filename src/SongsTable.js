@@ -1,15 +1,17 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import SongRow from './SongRow';
 
 export class SongsTable extends React.Component {
-
     render() {
-        const rows = this.props.songs.map(song => (
-          <tr key={song.id}>
-              <td>{song.title}</td>
-              <td><a target="_blank" href={song.backingTrackUrl}>Link</a></td>
-          </tr>
-        ));
+        const rows = this.props.songs.map(song =>
+          <SongRow
+            key={song.id}
+            title={song.title}
+            backingTrackUrl={song.backingTrackUrl}
+            practiceLog={song.practiceLog}
+          />
+        );
 
         return (
           <Table>
@@ -17,6 +19,7 @@ export class SongsTable extends React.Component {
               <tr>
                   <th>Name</th>
                   <th>Link</th>
+                  <th>Practice log</th>
               </tr>
               </thead>
               <tbody>
