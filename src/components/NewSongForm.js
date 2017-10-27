@@ -13,6 +13,14 @@ export default class NewSongForm extends React.Component {
 
     handleTitleChange = (e) => this.setState({title: e.target.value});
     handleUrlChange = (e) => this.setState({url: e.target.value});
+    
+    addSong = () => {
+        this.props.addSong(this.state.title, this.state.url);
+    };
+
+    isValid = () => {
+        return this.state.title.length !== 0 && this.state.url.length !== 0;
+    };
 
     render() {
         return (
@@ -33,8 +41,11 @@ export default class NewSongForm extends React.Component {
                     onChange={this.handleUrlChange}
                   />
               </FormGroup>
-              <Button onClick={() => this.props.addSong(this.state.title, this.state.url)}>
-                  Submit
+              <Button
+                disabled={!this.isValid()}
+                onClick={this.addSong}
+              >
+                  Add
               </Button>
               <Button onClick={this.props.hideForm}>
                   Cancel

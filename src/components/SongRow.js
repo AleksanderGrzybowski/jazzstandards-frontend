@@ -1,5 +1,6 @@
 import React from 'react';
 import { generateRecentDates } from './../recentDatesGenerator';
+import { Glyphicon } from 'react-bootstrap';
 
 export default function SongRow({title, backingTrackUrl, practiceLog, addPractice}) {
     const dates = generateRecentDates().map(date => date.format('YYYY-MM-DD'));
@@ -8,7 +9,7 @@ export default function SongRow({title, backingTrackUrl, practiceLog, addPractic
 
     const pastCells = pastDates.map((date, index) => {
         const content = practiceLog.includes(date) ? (
-          <i style={{color: 'green'}} className="glyphicon glyphicon-ok"></i>
+          <Glyphicon style={{color: 'green'}} glyph="ok"/>
         ) : undefined;
 
         return <td key={index} className="text-center">{content}</td>;
@@ -16,15 +17,15 @@ export default function SongRow({title, backingTrackUrl, practiceLog, addPractic
 
     const todayCell = practiceLog.includes(today) ? (
       <td>
-          <i style={{color: 'green'}} className="glyphicon glyphicon-ok"></i>
+          <Glyphicon style={{color: 'green'}} glyph="ok"/>
       </td>
     ) : (
       <td>
-          <i
+          <Glyphicon
             style={{color: 'lightgray', cursor: 'pointer'}}
-            className="glyphicon glyphicon-ok"
+            glyph="ok"
             onClick={addPractice}
-          ></i>
+          />
       </td>
     );
 
