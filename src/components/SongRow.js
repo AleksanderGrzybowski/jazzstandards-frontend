@@ -31,8 +31,7 @@ export default function SongRow({title, backingTrackUrl, practiceLog, addPractic
 
     return (
       <tr>
-          <td>{title}</td>
-          <td><a target="_blank" href={backingTrackUrl}>Link</a></td>
+          <td><a target="_blank" href={backingTrackUrl}>{title}</a></td>
           {pastCells}
           {todayCell}
       </tr>

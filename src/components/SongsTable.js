@@ -23,7 +23,6 @@ export default function SongsTable({songs, addPractice}) {
           <thead>
           <tr>
               <th>Name</th>
-              <th>Link</th>
               {dateColumns}
           </tr>
           </thead>
