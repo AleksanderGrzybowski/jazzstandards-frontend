@@ -1,5 +1,7 @@
 import * as backend from './backend';
 
+const serverError = (e) => ({type: 'REQUEST_ERROR', error: e});
+
 export function loadSongs() {
     return dispatch => {
         dispatch({type: 'REQUEST_START'});
@@ -11,7 +13,7 @@ export function loadSongs() {
                 type: 'SONGS_LOADED',
                 songs: songs
             });
-        })
+        }).catch(e => dispatch(serverError(e)))
     }
 }
 
@@ -24,7 +26,7 @@ export function addSong(title, url) {
 
             dispatch(setSongFormVisible(false));
             dispatch(loadSongs());
-        });
+        }).catch(e => dispatch(serverError(e)))
     }
 }
 
@@ -36,7 +38,7 @@ export function addPractice(songId) {
             dispatch({type: 'REQUEST_FINISH'});
 
             dispatch(loadSongs());
-        });
+        }).catch(e => dispatch(serverError(e)))
     }
 }
 
