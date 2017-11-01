@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { songs, view } from './reducers';
 import { connect, Provider } from 'react-redux';
-import { addPractice, addSong, loadSongs, setSongFormVisible } from './actions';
+import { togglePractice, addSong, loadSongs, setSongFormVisible } from './actions';
 
 const store = createStore(
   combineReducers({songs, view}),
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
     loadSongs: () => dispatch(loadSongs()),
     addSong: (title, url) => dispatch(addSong(title, url)),
     setSongFormVisible: (visible) => dispatch(setSongFormVisible(visible)),
-    addPractice: (songId) => dispatch(addPractice(songId))
+    togglePractice: (songId) => dispatch(togglePractice(songId))
 });
 
 const LiveApp = connect(mapStateToProps, mapDispatchToProps)(App);

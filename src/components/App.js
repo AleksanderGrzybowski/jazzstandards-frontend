@@ -6,7 +6,7 @@ import NewSongForm from './NewSongForm';
 import LoaderOverlay from './LoaderOverlay';
 import ErrorPage from './ErrorPage';
 
-export default function App({view, addSong, setSongFormVisible, songs, addPractice}) {
+export default function App({view, addSong, setSongFormVisible, songs, togglePractice}) {
     if (view.requestError) {
         return <ErrorPage/>;
     }
@@ -32,7 +32,7 @@ export default function App({view, addSong, setSongFormVisible, songs, addPracti
                   <Col md={12}>
                       <SongsTable
                         songs={songs.songs}
-                        addPractice={addPractice}
+                        togglePractice={togglePractice}
                       />
                   </Col>
               </Row>

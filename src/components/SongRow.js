@@ -2,7 +2,7 @@ import React from 'react';
 import { generateRecentDates } from './../recentDatesGenerator';
 import { Glyphicon } from 'react-bootstrap';
 
-export default function SongRow({title, backingTrackUrl, practiceLog, addPractice}) {
+export default function SongRow({title, backingTrackUrl, practiceLog, togglePractice}) {
     const dates = generateRecentDates().map(date => date.format('YYYY-MM-DD'));
     const pastDates = dates.slice(0, dates.length - 1);
     const today = dates[dates.length - 1];
@@ -15,25 +15,19 @@ export default function SongRow({title, backingTrackUrl, practiceLog, addPractic
         return <td key={index} className="text-center">{content}</td>;
     });
 
-    const todayCell = practiceLog.includes(today) ? (
-      <td>
-          <Glyphicon style={{color: 'green'}} glyph="ok"/>
-      </td>
-    ) : (
-      <td>
-          <Glyphicon
-            style={{color: 'lightgray', cursor: 'pointer'}}
-            glyph="ok"
-            onClick={addPractice}
-          />
-      </td>
-    );
-
+    const todayCellColor = practiceLog.includes(today) ? 'green' : 'lightgray';
+   
     return (
       <tr>
           <td><a target="_blank" href={backingTrackUrl}>{title}</a></td>
           {pastCells}
-          {todayCell}
+          <td>
+              <Glyphicon
+                style={{color: todayCellColor, cursor: 'pointer'}}
+                glyph="ok"
+                onClick={togglePractice}
+              />
+          </td>
       </tr>
     );
 }

@@ -30,11 +30,11 @@ export function addSong(title, url) {
     }
 }
 
-export function addPractice(songId) {
+export function togglePractice(songId) {
     return dispatch => {
         dispatch({type: 'REQUEST_START'});
 
-        backend.addPractice(songId).then(() => {
+        backend.togglePractice(songId).then(() => {
             dispatch({type: 'REQUEST_FINISH'});
 
             dispatch(loadSongs());
