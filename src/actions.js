@@ -17,19 +17,6 @@ export function loadSongs() {
     }
 }
 
-export function addSong(title, url) {
-    return dispatch => {
-        dispatch({type: 'REQUEST_START'});
-
-        backend.addSong(title, url).then(() => {
-            dispatch({type: 'REQUEST_FINISH'});
-
-            dispatch(setSongFormVisible(false));
-            dispatch(loadSongs());
-        }).catch(e => dispatch(serverError(e)))
-    }
-}
-
 export function togglePractice(songId) {
     return dispatch => {
         dispatch({type: 'REQUEST_START'});
@@ -39,11 +26,5 @@ export function togglePractice(songId) {
 
             dispatch(loadSongs());
         }).catch(e => dispatch(serverError(e)))
-    }
-}
-
-export function setSongFormVisible(visible) {
-    return dispatch => {
-        dispatch({type: visible ? 'SHOW_NEW_SONG_FORM' : 'HIDE_NEW_SONG_FORM'})
     }
 }

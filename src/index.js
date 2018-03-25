@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { songs, view } from './reducers';
 import { connect, Provider } from 'react-redux';
-import { togglePractice, addSong, loadSongs, setSongFormVisible } from './actions';
+import { loadSongs, togglePractice } from './actions';
 
 const store = createStore(
   combineReducers({songs, view}),
@@ -19,8 +19,6 @@ const mapStateToProps = (state) => state;
 // noinspection JSUnusedGlobalSymbols
 const mapDispatchToProps = (dispatch) => ({
     loadSongs: () => dispatch(loadSongs()),
-    addSong: (title, url) => dispatch(addSong(title, url)),
-    setSongFormVisible: (visible) => dispatch(setSongFormVisible(visible)),
     togglePractice: (songId) => dispatch(togglePractice(songId))
 });
 
